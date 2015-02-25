@@ -44,8 +44,12 @@ public class SupportSystem
             if(input.contains("bye")) {
                 finished = true;
             }
-            else {
+            else if(input.contains(" ")){
                 String response = responder.generateResponse();
+                System.out.println(response);
+            }
+            else{
+                String response = responder.generateClave(input);
                 System.out.println(response);
             }
         }
