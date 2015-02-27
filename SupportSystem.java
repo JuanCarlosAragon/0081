@@ -16,7 +16,7 @@ public class SupportSystem
 {
     private InputReader reader;
     private Responder responder;
-    private HashSet<String> claves;
+    
     
     /**
      * Creates a technical support system.
@@ -25,11 +25,6 @@ public class SupportSystem
     {
         reader = new InputReader();
         responder = new Responder();
-        claves = new HashSet<>();
-        claves.add("Hello");
-        claves.add("Hola");
-        claves.add("Kaixo");
-        claves.add("Salut");
     }
 
     /**
@@ -45,21 +40,12 @@ public class SupportSystem
 
         while(!finished) {
             HashSet coleccion = reader.getInput();
-            String input = coleccion.toString();
-            
-            input = input.toLowerCase();
 
             if(coleccion.contains("bye")) {
                 finished = true;
             }
-            else if(coleccion.containsAll(claves)){
-                String response = responder.generateClave(input);
-                System.out.println(response);
-                
-                
-            }
             else{
-                String response = responder.generateResponse();
+                String response = responder.generateResponse(coleccion);
                 System.out.println(response);
             }
         }
